@@ -41,16 +41,16 @@ namespace CircustreinApplication.Models
 
             foreach (var wagon in Wagons)
             {
-                for (int i = 0; i < wagon.Animals.Count; i++)
+                if (wagon.AnimalIsCompatible(animal) && wagon.CheckWagonCapacity(animal))
                 {
-                    if (wagon.AnimalIsCompatible(animal) && wagon.CheckWagonCapacity(animal))
-                    {
-                        available = wagon;
-                    }
-                    
-                    available = null;
-                    
+                    available = wagon;
                 }
+
+                else
+                {
+                    available = null;
+                }
+
             }
 
             return available;
