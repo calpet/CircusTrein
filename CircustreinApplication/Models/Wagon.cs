@@ -21,6 +21,7 @@ namespace CircustreinApplication.Models
             if (Animals.Count == 0)
             {
                 Animals.Add(animal);
+                Capacity -= Convert.ToInt32(animal.Size);
                 AnimalDiet = animal.Diet;
             }
             else
@@ -31,14 +32,7 @@ namespace CircustreinApplication.Models
 
         public bool CheckWagonCapacity(Animal animal)
         {
-            if (Capacity - animal.Size > 0)
-            {
-                Animals.Add(animal);
-                Capacity -= Convert.ToInt32(animal.Size);
-                return true;
-            }
-
-            return false;
+            return Capacity - animal.Size > 0;
         }
 
         public bool AnimalIsCompatible(Animal animal)
