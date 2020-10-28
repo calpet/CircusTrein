@@ -32,7 +32,7 @@ namespace CircustreinApplication.Models
             bool isCompatible = false;
             for (int i = 0; i < Animals.Count; i++)
             {
-                if (animal.Size == Animals[i].Size && animal.Diet == Animals[i].Diet && CheckWagonCapacity(animal))
+                if (animal.Size == Animals[i].Size && animal.Diet == Animals[i].Diet)
                 {
                     isCompatible = true;
                 }
