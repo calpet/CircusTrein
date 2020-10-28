@@ -22,13 +22,13 @@ namespace CircustreinApplication.Models
                 var availableWagon = CheckIfWagonAvailable(animal);
                 if (availableWagon != null)
                 {
-                    availableWagon.Animals.Add(animal);
+                    availableWagon.AddToWagon(animal);
                     isSorted = true;
                 }
                 else
                 {
                     availableWagon = new Wagon();
-                    availableWagon.Animals.Add(animal);
+                    availableWagon.AddToWagon(animal);
                 }
             }
 
