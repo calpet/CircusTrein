@@ -9,7 +9,7 @@ namespace CircustreinApplication
 
         public override string ToString()
         {
-            return "Size: " + Size + "\nDiet: " + Diet;
+            return "\nSize: " + Size + "\n" + "Diet: " + Diet;
         }
     }
 }

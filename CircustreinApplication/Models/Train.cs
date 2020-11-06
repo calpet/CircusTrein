@@ -6,12 +6,14 @@ namespace CircustreinApplication.Models
 {
     public class Train
     {
-        private int _totalWagons;
         public List<Wagon> Wagons { get; private set; }
+        private Wagon _wagon;
 
         public Train()
         {
             Wagons = new List<Wagon>();
+            _wagon = new Wagon();
+            Wagons.Add(_wagon);
         }
 
         public bool SortInWagons(List<Animal> animals)
@@ -28,6 +30,7 @@ namespace CircustreinApplication.Models
                 else
                 {
                     availableWagon = new Wagon();
+                    Wagons.Add(availableWagon);
                     availableWagon.AddToWagon(animal);
                 }
             }
@@ -37,23 +40,22 @@ namespace CircustreinApplication.Models
 
         public Wagon CheckIfWagonAvailable(Animal animal)
         {
-            Wagon available = null;
 
             foreach (var wagon in Wagons)
             {
                 if (wagon.AnimalIsCompatible(animal) && wagon.CheckWagonCapacity(animal))
                 {
-                    available = wagon;
+                    _wagon = wagon;
                 }
 
                 else
                 {
-                    available = null;
+                    _wagon = null;
                 }
 
             }
 
-            return available;
+            return _wagon;
         }
 
 
