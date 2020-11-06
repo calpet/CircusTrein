@@ -16,16 +16,14 @@ namespace CircustreinApplication.Models
             Wagons.Add(_wagon);
         }
 
-        public bool SortInWagons(List<Animal> animals)
+        public void SortInWagons(List<Animal> animals)
         {
-            bool isSorted = false;
             foreach (var animal in animals)
             {
                 var availableWagon = CheckIfWagonAvailable(animal);
                 if (availableWagon != null)
                 {
                     availableWagon.AddToWagon(animal);
-                    isSorted = true;
                 }
                 else
                 {
@@ -34,8 +32,6 @@ namespace CircustreinApplication.Models
                     availableWagon.AddToWagon(animal);
                 }
             }
-
-            return isSorted;
         }
 
         public Wagon CheckIfWagonAvailable(Animal animal)
@@ -46,6 +42,7 @@ namespace CircustreinApplication.Models
                 if (wagon.AnimalIsCompatible(animal) && wagon.CheckWagonCapacity(animal))
                 {
                     _wagon = wagon;
+                    break;
                 }
 
                 else
