@@ -14,8 +14,8 @@ namespace CircustreinGUI
         private static bool _started = true;
         static void Main(string[] args)
         {
-            _algo = new AlgorithmViewModel();
-            _algo.GenerateRandomAnimals(35);
+            _algo = new AlgorithmViewModel(); 
+            _animals = _algo.GenerateRandomAnimals(35);
             var train = Submit(_animals);
             Result(train);
         }
@@ -34,7 +34,6 @@ namespace CircustreinGUI
             {
                 foreach (var w in wagons)
                 {
-                    Console.WriteLine("\nWagon Compatibility: " + w.CompatibleWith + "\n");
                     foreach (var animal in w.Animals)
                     {
                         Console.WriteLine(animal);
