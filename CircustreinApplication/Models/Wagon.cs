@@ -8,7 +8,7 @@ namespace CircustreinApplication.Models
     {
         public int Capacity { get; private set; }
         public List<Animal> Animals { get; set; }
-        public Diet AnimalDiet { get; set; }
+        public Diet CompatibleWith { get; set; }
 
         public Wagon()
         {
@@ -22,29 +22,31 @@ namespace CircustreinApplication.Models
             {
                 Animals.Add(animal);
                 Capacity -= Convert.ToInt32(animal.Size);
-                AnimalDiet = animal.Diet;
+                CompatibleWith = animal.Diet;
             }
-            else
+            else if (Animals.Count != 0 && CheckWagonCapacity(animal))
             {
                 Animals.Add(animal);
+                Capacity -= Convert.ToInt32(animal.Size);
             }
         }
 
         public bool CheckWagonCapacity(Animal animal)
         {
-            return Capacity - animal.Size > 0;
+            return Capacity - animal.Size >= 0;
         }
 
         public bool AnimalIsCompatible(Animal animal)
         {
-            bool isCompatible = false;
+            bool isCompatible = true;
+
             for (int i = 0; i < Animals.Count; i++)
             {
-                if (animal.Size == Animals[i].Size && animal.Diet == AnimalDiet)
+                if (animal.Size == Animals[i].Size && animal.Diet == CompatibleWith)
                 {
                     isCompatible = true;
                 } 
-                else if (animal.Size != Animals[i].Size && animal.Diet == Diet.Herbivore && AnimalDiet == Diet.Herbivore)
+                else if (animal.Size != Animals[i].Size && animal.Diet == Diet.Herbivore && CompatibleWith == Diet.Herbivore)
                 {
                     isCompatible = true;
                 }

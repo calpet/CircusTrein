@@ -6,54 +6,53 @@ namespace CircustreinApplication.Models
 {
     public class Train
     {
-        private int _totalWagons;
         public List<Wagon> Wagons { get; private set; }
+        private Wagon _wagon;
 
         public Train()
         {
             Wagons = new List<Wagon>();
+            _wagon = new Wagon();
+            Wagons.Add(_wagon);
         }
 
-        public bool SortInWagons(List<Animal> animals)
+        public void SortInWagons(List<Animal> animals)
         {
-            bool isSorted = false;
             foreach (var animal in animals)
             {
                 var availableWagon = CheckIfWagonAvailable(animal);
                 if (availableWagon != null)
                 {
                     availableWagon.AddToWagon(animal);
-                    isSorted = true;
                 }
                 else
                 {
                     availableWagon = new Wagon();
+                    Wagons.Add(availableWagon);
                     availableWagon.AddToWagon(animal);
                 }
             }
-
-            return isSorted;
         }
 
         public Wagon CheckIfWagonAvailable(Animal animal)
         {
-            Wagon available = null;
 
             foreach (var wagon in Wagons)
             {
                 if (wagon.AnimalIsCompatible(animal) && wagon.CheckWagonCapacity(animal))
                 {
-                    available = wagon;
+                    _wagon = wagon;
+                    break;
                 }
 
                 else
                 {
-                    available = null;
+                    _wagon = null;
                 }
 
             }
 
-            return available;
+            return _wagon;
         }
 
 
