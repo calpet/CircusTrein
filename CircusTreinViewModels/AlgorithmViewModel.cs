@@ -9,7 +9,6 @@ namespace CircusTreinViewModels
     {
         private Animal _animal;
         private AnimalCollection _collection;
-        private Wagon _wagon;
         private Train _train;
         private List<Animal> _animals;
 
@@ -17,7 +16,6 @@ namespace CircusTreinViewModels
         {
             _animal = new Animal();
             _collection = new AnimalCollection();
-            _wagon = new Wagon();
             _train = new Train();
             _animals = new List<Animal>();
         }
@@ -33,13 +31,13 @@ namespace CircusTreinViewModels
         public List<Animal> GenerateRandomAnimals(int amount)
         {
             Random rDiet = new Random();
-            Random rSize = new Random();
+            //Random rSize = new Random();
             Array dValues = Enum.GetValues(typeof(Diet));
             Array sValues = Enum.GetValues(typeof(Size));
 
             for (int i = 0; i < amount; i++)
             {
-                Animal animal = new Animal() { Diet = (Diet)dValues.GetValue(rDiet.Next(dValues.Length)), Size = (Size)sValues.GetValue(rSize.Next(sValues.Length)) };
+                Animal animal = new Animal() { Diet = (Diet)dValues.GetValue(rDiet.Next(dValues.Length)), Size = (Size)sValues.GetValue(rDiet.Next(sValues.Length)) };
                 _animals.Add(animal);
             }
 
