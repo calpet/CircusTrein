@@ -39,7 +39,7 @@ namespace CircustreinApplication.Models
 
             foreach (var wagon in Wagons)
             {
-                if (wagon.AnimalIsCompatible(animal) && wagon.CheckWagonCapacity(animal))
+                if (wagon.AnimalIsCompatible(animal) && wagon.CheckWagonCapacity(animal) || wagon.CompatibleSize == 0 && wagon.CompatibleDiet == 0)
                 {
                     _wagon = wagon;
                     break;

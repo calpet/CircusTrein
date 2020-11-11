@@ -2,7 +2,7 @@
 {
     public enum Diet
     {
-        Carnivore,
-        Herbivore
+        Carnivore = 1,
+        Herbivore = 2
     }
 }

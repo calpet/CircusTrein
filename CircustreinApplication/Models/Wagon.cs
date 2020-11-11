@@ -6,15 +6,18 @@ namespace CircustreinApplication.Models
 {
     public class Wagon
     {
+        private bool _isCompatible;
         public int Capacity { get; private set; }
-        public List<Animal> Animals { get; set; }
-        public Diet CompatibleDiet { get; set; }
-        public Size CompatibleSize { get; set; }
+        public List<Animal> Animals { get; private set; }
+        public Diet CompatibleDiet { get; private set; }
+        public Size CompatibleSize { get; private set; }
 
         public Wagon()
         {
             Capacity = 10;
             Animals = new List<Animal>();
+            CompatibleSize = 0;
+            CompatibleDiet = 0;
         }
 
         public void AddToWagon(Animal animal)
@@ -40,22 +43,22 @@ namespace CircustreinApplication.Models
 
         public bool AnimalIsCompatible(Animal animal)
         {
-            bool isCompatible = true;
+           
 
-            if (animal.Size == CompatibleSize && animal.Diet == CompatibleDiet)
+            if (animal.Size == CompatibleSize && animal.Diet == CompatibleDiet || CompatibleSize == 0 && CompatibleDiet == 0)
             {
-                isCompatible = true;
+                _isCompatible = true;
             } 
             else if (animal.Size != CompatibleSize && animal.Diet == Diet.Herbivore && CompatibleDiet == Diet.Herbivore)
             {
-                isCompatible = true;
+                _isCompatible = true;
             }
             else
             {
-                isCompatible = false;
+                _isCompatible = false;
             }
 
-            return isCompatible;
+            return _isCompatible;
         }
 
 
