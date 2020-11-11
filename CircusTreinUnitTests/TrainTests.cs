@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace CircusTreinUnitTests
 {
-    public class Tests
+    public class TrainTests
     {
         private AlgorithmViewModel _algo;
         private Train _train;

@@ -11,16 +11,14 @@ namespace CircustreinGUI
     {
         private static AlgorithmViewModel _algo = new AlgorithmViewModel();
         private static List<Animal> _animals = new List<Animal>();
-        private static bool _started = true;
+
         static void Main(string[] args)
         {
             _algo = new AlgorithmViewModel(); 
-            _animals = _algo.GenerateRandomAnimals(17);
+            _animals = _algo.GenerateRandomAnimals(214);
             var train = Submit(_animals);
             Result(train);
         }
-
-        
 
         public static Train Submit(List<Animal> animals)
         {
