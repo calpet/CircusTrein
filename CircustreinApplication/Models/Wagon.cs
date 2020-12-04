@@ -28,7 +28,7 @@ namespace CircustreinApplication.Models
             CompatibleSize = compSize;
         }
 
-        public void AddToWagon(Animal animal)
+        public void AddAnimalToWagon(Animal animal)
         {
             if (Animals.Count == 0)
             {
@@ -37,19 +37,19 @@ namespace CircustreinApplication.Models
                 CompatibleDiet = animal.Diet;
                 CompatibleSize = animal.Size;
             }
-            else if (Animals.Count != 0 && CheckWagonCapacity(animal))
+            else if (Animals.Count != 0 && DoesAnimalFitWagon(animal))
             {
                 Animals.Add(animal);
                 Capacity -= Convert.ToInt32(animal.Size);
             }
         }
 
-        public bool CheckWagonCapacity(Animal animal)
+        public bool DoesAnimalFitWagon(Animal animal)
         {
             return Capacity - animal.Size >= 0;
         }
 
-        public bool AnimalIsCompatible(Animal animal)
+        public bool IsAnimalCompatible(Animal animal)
         {
             if (animal.Size == CompatibleSize && animal.Diet == CompatibleDiet || CompatibleSize == 0 && CompatibleDiet == 0)
             {

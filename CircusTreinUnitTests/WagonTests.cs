@@ -34,7 +34,7 @@ namespace CircusTreinUnitTests
             _animal = new Animal() {Diet = Diet.Herbivore, Size = Size.Large};
 
             //Act:
-            _wagon.AddToWagon(_animal);
+            _wagon.AddAnimalToWagon(_animal);
 
             //Assert:
             Assert.AreEqual(5, _wagon.Capacity);
@@ -49,7 +49,7 @@ namespace CircusTreinUnitTests
             //Act:
             _animals = _algo.GenerateSpecificAnimals(Size.Large, Diet.Herbivore, 2);
             Train train = _algo.StartAlgorithms(_animals);
-            bool isCompatible = train.Wagons[0].CheckWagonCapacity(_animal);
+            bool isCompatible = train.Wagons[0].DoesAnimalFitWagon(_animal);
 
             //Assert:
             Assert.IsFalse(isCompatible);
