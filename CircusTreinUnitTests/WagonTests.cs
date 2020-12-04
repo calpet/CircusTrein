@@ -23,8 +23,12 @@ namespace CircusTreinUnitTests
             _wagon = new Wagon();
         }
 
+        /// <summary>
+        /// Naming convention: [methodName]_[input]_[expectedOutput]()
+        /// </summary>
+
         [Test]
-        public void Wagon_AnimalGetsAddedToEmptyWagon()
+        public void AddToWagon_LargeAnimal_CapacityIs5()
         {
             //Arrange: 
             _animal = new Animal() {Diet = Diet.Herbivore, Size = Size.Large};
@@ -37,7 +41,7 @@ namespace CircusTreinUnitTests
         }
 
         [Test]
-        public void Animal_IsNotCompatibleWithOtherAnimalsInWagon()
+        public void CheckWagonCapacity_2LargeAnimals_IsWagonCompatibleFalse()
         {
             //Arrange: 
             _animal = new Animal() {Diet = Diet.Carnivore, Size = Size.Large};

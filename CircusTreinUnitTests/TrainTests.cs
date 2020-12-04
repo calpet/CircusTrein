@@ -21,8 +21,12 @@ namespace CircusTreinUnitTests
             _algo = new AlgorithmViewModel();
         }
 
+        /// <summary>
+        /// Naming convention: [methodName]_[input]_[expectedOutput]()
+        /// </summary>
+
         [Test]
-        public void Train_HasOneFullWagon()
+        public void SortInWagons_10SmallCarnivores_TrainHasOneFullWagon()
         {
             //Arrange: 
             _animals = _algo.GenerateSpecificAnimals(Size.Small, Diet.Carnivore, 10);
@@ -35,7 +39,7 @@ namespace CircusTreinUnitTests
         }
 
         [Test]
-        public void Train_HasTwoWagons()
+        public void SortInWagons_5SmallCarnivores5SmallHerbivores_TrainHasTwoWagons()
         {
             //Arrange:
             _animals = _algo.GenerateSpecificAnimals(Size.Small, Diet.Carnivore, 5);
