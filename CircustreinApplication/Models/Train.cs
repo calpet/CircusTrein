@@ -23,13 +23,13 @@ namespace CircustreinApplication.Models
                 var availableWagon = CheckIfWagonAvailable(animal);
                 if (availableWagon != null)
                 {
-                    availableWagon.AddToWagon(animal);
+                    availableWagon.AddAnimalToWagon(animal);
                 }
                 else
                 {
                     availableWagon = new Wagon(animal.Diet, animal.Size);
                     Wagons.Add(availableWagon);
-                    availableWagon.AddToWagon(animal);
+                    availableWagon.AddAnimalToWagon(animal);
                 }
             }
         }
@@ -38,7 +38,7 @@ namespace CircustreinApplication.Models
         {
             foreach (var wagon in Wagons)
             {
-                if (wagon.AnimalIsCompatible(animal) && wagon.CheckWagonCapacity(animal) || wagon.CompatibleSize == 0 && wagon.CompatibleDiet == 0)
+                if (wagon.IsAnimalCompatible(animal) && wagon.DoesAnimalFitWagon(animal) || wagon.CompatibleSize == 0 && wagon.CompatibleDiet == 0)
                 {
                     _wagon = wagon;
                     break;

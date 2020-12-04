@@ -15,7 +15,7 @@ namespace CircustreinGUI
         static void Main(string[] args)
         {
             _algo = new AlgorithmViewModel(); 
-            _animals = _algo.GenerateRandomAnimals(214);
+            _animals = _algo.GenerateRandomAnimals(2000);
             var train = Submit(_animals);
             Result(train);
         }

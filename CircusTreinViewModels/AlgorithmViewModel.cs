@@ -30,14 +30,13 @@ namespace CircusTreinViewModels
 
         public List<Animal> GenerateRandomAnimals(int amount)
         {
-            Random rDiet = new Random();
-            //Random rSize = new Random();
+            Random randomizer = new Random();
             Array dValues = Enum.GetValues(typeof(Diet));
             Array sValues = Enum.GetValues(typeof(Size));
 
             for (int i = 0; i < amount; i++)
             {
-                Animal animal = new Animal() { Diet = (Diet)dValues.GetValue(rDiet.Next(dValues.Length)), Size = (Size)sValues.GetValue(rDiet.Next(sValues.Length)) };
+                Animal animal = new Animal() { Diet = (Diet)dValues.GetValue(randomizer.Next(dValues.Length)), Size = (Size)sValues.GetValue(randomizer.Next(sValues.Length)) };
                 _animals.Add(animal);
             }
 
